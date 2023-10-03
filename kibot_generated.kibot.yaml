@@ -1,0 +1,80 @@
+# This is a working example.
+# For a more complete reference use `--example`
+kibot:
+  version: 1
+
+global:
+  filters:
+  - number: 1007
+  - number: 1015
+  - number: 58
+
+import:
+- file: JLCPCB
+  definitions:
+    _KIBOT_MANF_DIR: Manufacturers/JLCPCB
+    _KIBOT_POS_PRE_TRANSFORM: '[''_kicost_rename'', ''_rot_footprint'']'
+    _KIBOT_BOM_ENABLED: 'false'
+
+outputs:
+- name: basic_gerb_drill
+  comment: Drill files in GERB_DRILL format
+  type: gerb_drill
+  dir: Gerbers_and_Drill
+  options:
+    map: gerber
+- name: gerber_modern
+  comment: Gerbers in modern format, recommended by the standard
+  type: gerber
+  dir: Gerbers_and_Drill
+  layers:
+  - layer: F.Cu
+    suffix: F_Cu
+    description: Front copper
+  - layer: B.Cu
+    suffix: B_Cu
+    description: Bottom copper
+  - layer: B.Silkscreen
+    suffix: B_Silkscreen
+    description: Bottom silkscreen (artwork)
+  - layer: F.Silkscreen
+    suffix: F_Silkscreen
+    description: Front silkscreen (artwork)
+  - layer: B.Mask
+    suffix: B_Mask
+    description: Bottom soldermask (negative)
+  - layer: F.Mask
+    suffix: F_Mask
+    description: Front soldermask (negative)
+  - layer: Edge.Cuts
+    suffix: Edge_Cuts
+    description: Board shape
+  - layer: B.Courtyard
+    suffix: B_Courtyard
+    description: Bottom courtyard area
+  - layer: F.Courtyard
+    suffix: F_Courtyard
+    description: Front courtyard area
+  - layer: B.Fab
+    suffix: B_Fab
+    description: Bottom documentation
+  - layer: F.Fab
+    suffix: F_Fab
+    description: Front documentation
+- name: basic_pdf_sch_print
+  comment: Schematic in PDF format
+  type: pdf_sch_print
+  dir: Schematic
+
+...
+definitions:
+  _KIBOT_MANF_DIR_COMP: Manufacturers
+  _KIBOT_GERBER_LAYERS: "- layer: 'F.Cu'\n        suffix: 'F_Cu'\n        description:\
+    \ 'Front copper'\n      - layer: 'B.Cu'\n        suffix: 'B_Cu'\n        description:\
+    \ 'Bottom copper'\n      - layer: 'B.Silkscreen'\n        suffix: 'B_Silkscreen'\n\
+    \        description: 'Bottom silkscreen (artwork)'\n      - layer: 'F.Silkscreen'\n\
+    \        suffix: 'F_Silkscreen'\n        description: 'Front silkscreen (artwork)'\n\
+    \      - layer: 'B.Mask'\n        suffix: 'B_Mask'\n        description: 'Bottom\
+    \ soldermask (negative)'\n      - layer: 'F.Mask'\n        suffix: 'F_Mask'\n\
+    \        description: 'Front soldermask (negative)'\n      - layer: 'Edge.Cuts'\n\
+    \        suffix: 'Edge_Cuts'\n        description: 'Board shape'"
