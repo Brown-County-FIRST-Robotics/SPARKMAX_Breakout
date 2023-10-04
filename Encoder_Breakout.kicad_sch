@@ -988,9 +988,9 @@
     (property "Datasheet" "5-104935-3" (at 114.3 80.01 0)
       (effects (font (size 1.27 1.27) italic) hide)
     )
-    (pin "1" (uuid a29a7885-538c-4a0d-bc88-498dbfa450b1))
-    (pin "2" (uuid 25d38698-124d-4928-8046-2ff21b08b46e))
-    (pin "3" (uuid 6e5fdc59-5efc-46e2-920f-96c4d9410fac))
+    (pin "1" (uuid 2b2599dd-5df7-46fa-9c3c-4f2fe4345f5b))
+    (pin "2" (uuid 021f2d55-c8a4-4a30-8b3f-43f8d56f72f2))
+    (pin "3" (uuid 37f92ba0-2d54-44a6-b0d9-ab67624530b9))
     (instances
       (project "Encoder_Breakout"
         (path "/896045ed-d89c-42ad-9d47-a66b46c2187b"
