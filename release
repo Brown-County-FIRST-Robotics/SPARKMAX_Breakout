@@ -1,0 +1,17 @@
+#!/bin/bash
+
+tname=""
+read -p "Release Name:" tname 
+
+git tag -a $tname
+gh release create $tname
+kibot
+mv 3D/Encoder_Breakout-3D_bottom.png 3D/bottom.png
+mv 3D/Encoder_Breakout-3D.step 3D/board.step
+mv 3D/Encoder_Breakout-3D_top30deg.png 3D/30deg.png
+mv 3D/Encoder_Breakout-3D_top.png 3D/top.png
+mv Schematic/Encoder_Breakout-schematic.pdf Schematic/sch.pdf
+mv Manufacturers/Encoder_Breakout-_JLCPCB_compress.zip Manufacturers/JLC.zip
+zip Gerbers.zip Gerbers_and_Drill/*
+gh release upload $tname Gerbers.zip 3D/* Schematic/sch.pdf Manufacturers/JLC.zip
+rm Gerbers.zip
